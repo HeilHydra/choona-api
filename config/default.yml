@@ -1,0 +1,5 @@
+waterway:
+io:
+  port: 80
+auth0:
+  secret: default

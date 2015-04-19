@@ -1,0 +1,25 @@
+{
+  "apps" : [{
+    "name": "choona-api",
+    "script": "service.js"
+  }],
+
+  "deploy" : {
+    "production" : {
+      "user" : "root",
+      "host" : "choona.net",
+      "ref"  : "origin/master",
+      "repo" : "git@github.com:HeilHydra/choona-api.git",
+      "path" : "/var/www/choona-api/production",
+      "post-deploy" : "npm install && pm2 startOrRestart ecosystem.json --env production"
+    },
+    "staging" : {
+      "user" : "root",
+      "host" : "choona.net",
+      "ref"  : "origin/staging",
+      "repo" : "git@github.com:HeilHydra/choona-api.git",
+      "path" : "/var/www/choona-api/staging",
+      "post-deploy" : "npm install && pm2 startOrRestart ecosystem.json --env staging"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "choona-api",
+  "version": "0.1.0",
+  "description": "REST/Socket.IO API for Choona",
+  "main": "service.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HeilHydra/choona-api.git"
+  },
+  "author": "Oliver Woodings",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/HeilHydra/choona-api/issues"
+  },
+  "homepage": "https://github.com/HeilHydra/choona-api",
+  "dependencies": {
+    "config": "^1.12.0",
+    "js-yaml": "^3.2.7",
+    "socket.io": "^1.3.5",
+    "socketio-jwt": "^3.0.0",
+    "waterway": "git://github.com/HeilHydra/waterway#refactor-streams"
+  }
+}
