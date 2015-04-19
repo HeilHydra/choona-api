@@ -14,8 +14,14 @@ io.on("connection", socketioJwt.authorize({
     secret: new Buffer(config.auth0.secret, "base64"),
     timeout: 0
   }))
+  .on("connection", function (socket) {
+    console.log("CONNECTION");
+    socket.on("authenticate", function () {
+      console.log("yolo");
+    });
+  })
   .on("authenticated", function (socket) {
-
+    console.log("authenticated");
     socket.on("playlist:join", function (data) {
       if (socket.playlistId) {
         socket.leaveAll();
