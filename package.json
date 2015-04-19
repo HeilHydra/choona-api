@@ -20,7 +20,7 @@
     "config": "^1.12.0",
     "js-yaml": "^3.2.7",
     "socket.io": "^1.3.5",
-    "socketio-jwt": "^3.0.0",
+    "socketio-jwt": "git://github.com/HeilHydra/socketio-jwt.git",
     "waterway": "git://github.com/HeilHydra/waterway#refactor-streams",
     "when": "^3.7.2"
   }

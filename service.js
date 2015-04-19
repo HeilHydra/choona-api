@@ -12,7 +12,7 @@ var streamManager = new StreamManager(service);
 
 io.on("connection", socketioJwt.authorize({
     secret: new Buffer(config.auth0.secret, "base64"),
-    timeout: 0
+    timeout: -1
   }))
   .on("connection", function (socket) {
     console.log("CONNECTION");
