@@ -40,21 +40,21 @@ io.on("connection", socketioJwt.authorize({
         });
     });
 
-    socket.on("playlist:add", function (data) {
+    socket.on("playlist:add", function (trackId) {
       service
-        .request("playlist", socket.playlistId, "add", data.trackId)
+        .request("playlist", socket.playlistId, "add", trackId)
         .send();
     });
 
-    socket.on("playlist:upvote", function (data) {
+    socket.on("playlist:upvote", function (trackId) {
       service
-        .request("playlist", socket.playlistId, "upvote", data.trackId)
+        .request("playlist", socket.playlistId, "upvote", trackId)
         .send();
     });
 
-    socket.on("playlist:downvote", function (data) {
+    socket.on("playlist:downvote", function (trackId) {
       service
-        .request("playlist", socket.playlistId, "upvote", data.trackId)
+        .request("playlist", socket.playlistId, "upvote", trackId)
         .send();
     });
 
@@ -62,6 +62,15 @@ io.on("connection", socketioJwt.authorize({
       streamManager
         .get(socket.playlistId)
         .add(socket);
+    });
+
+    socket.on("playlist:search", function (searchString, cb) {
+      service
+        .request("source", "spotify", "search", searchString)
+        .send()
+        .then(function (res) {
+          cb(res.data);
+        });
     });
 
     socket.on("disconnect", function () {
