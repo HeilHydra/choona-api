@@ -46,12 +46,6 @@ io.on("connection", socketioJwt.authorize({
         .send();
     });
 
-    socket.on("playlist:upvote", function (trackId) {
-      service
-        .request("playlist", socket.playlistId, "upvote", trackId)
-        .send();
-    });
-
     socket.on("playlist:downvote", function (trackId) {
       service
         .request("playlist", socket.playlistId, "upvote", trackId)
@@ -90,9 +84,9 @@ service
   });
 
 service
-  .event("playlist", ":playlistId", "sorted")
+  .event("playlist", ":playlistId", "queue")
   .on(function (res) {
-    io.to(res.params.playlistId).emit("playlist:sorted", res.data);
+    io.to(res.params.playlistId).emit("playlist:queue", res.data);
   });
 
 service
