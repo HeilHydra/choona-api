@@ -48,6 +48,12 @@ io.on("connection", socketioJwt.authorize({
 
     socket.on("playlist:downvote", function (trackId) {
       service
+        .request("playlist", socket.playlistId, "downvote", trackId)
+        .send();
+    });
+
+    socket.on("playlist:upvote", function (trackId) {
+      service
         .request("playlist", socket.playlistId, "upvote", trackId)
         .send();
     });
