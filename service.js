@@ -90,6 +90,12 @@ service
   });
 
 service
+  .event("playlist", ":playlistId", "empty")
+  .on(function (res) {
+    io.to(res.params.playlistId).emit("playlist:empty");
+  });
+
+service
   .event("playlist", ":playlistId", "playing")
   .on(function (res) {
     io.to(res.params.playlistId).emit("playlist:playing", res.data);
