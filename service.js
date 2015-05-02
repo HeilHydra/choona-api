@@ -66,7 +66,7 @@ io.on("connection", socketioJwt.authorize({
 
     socket.on("playlist:search", function (searchString, cb) {
       service
-        .request("source", "spotify", "search", searchString)
+        .request("playlist", "search", searchString)
         .send()
         .then(function (res) {
           cb(res.data);
