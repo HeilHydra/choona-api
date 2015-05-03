@@ -58,7 +58,13 @@ io.on("connection", socketioJwt.authorize({
         .send();
     });
 
-    socket.on("playlist:play", function () {
+    socket.on("playlist:stream:start", function () {
+      streamManager
+        .get(socket.playlistId)
+        .add(socket);
+    });
+
+    socket.on("playlist:stream:stop", function () {
       streamManager
         .get(socket.playlistId)
         .add(socket);
