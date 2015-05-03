@@ -19,7 +19,6 @@
   "dependencies": {
     "config": "^1.12.0",
     "js-yaml": "^3.2.7",
-    "lame": "^1.2.2",
     "lodash-node": "^3.7.0",
     "socket.io": "^1.3.5",
     "socketio-jwt": "git://github.com/HeilHydra/socketio-jwt.git",
