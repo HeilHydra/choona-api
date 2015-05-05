@@ -77,16 +77,22 @@ function registerSocket(socket) {
       .send();
   });
 
-  socket.on("playlist:downvote", function (trackId) {
+  socket.on("playlist:downvote", function (trackId, cb) {
     service
-      .request("playlist", socket.playlistId, "downvote", trackId)
-      .send();
+      .request("playlist", socket.playlistId, "user", socket.decoded_token.user_id, "downvote", trackId)
+      .send()
+      .then(function (res) {
+        cb(res.data);
+      });
   });
 
-  socket.on("playlist:upvote", function (trackId) {
+  socket.on("playlist:upvote", function (trackId, cb) {
     service
-      .request("playlist", socket.playlistId, "upvote", trackId)
-      .send();
+      .request("playlist", socket.playlistId, "user", socket.decoded_token.user_id, "upvote", trackId)
+      .send()
+      .then(function (res) {
+        cb(res.data);
+      });
   });
 
   socket.on("playlist:stream:start", function () {
